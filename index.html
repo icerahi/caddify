@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Kit: Group PI24E</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Custom styles to smooth out the details/summary interaction */
+      details > summary {
+        list-style: none;
+      }
+      details > summary::-webkit-details-marker {
+        display: none;
+      }
+      details[open] summary ~ * {
+        animation: sweep 0.3s ease-in-out;
+      }
+      @keyframes sweep {
+        0% {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      /* Rotate arrow when open */
+      details[open] summary svg {
+        transform: rotate(180deg);
+      }
+    </style>
+  </head>
+  <body class="bg-slate-50 min-h-screen py-10 px-4 font-sans text-slate-800">
+    <div class="max-w-4xl mx-auto">
+      <header class="text-center mb-10">
+        <h1 class="text-4xl font-extrabold text-blue-900 mb-2">
+          Group Project PI24E
+        </h1>
+        <p class="text-lg text-slate-600">
+          Data Soft & Sam Altman | Leadership & Management
+        </p>
+        <div
+          class="mt-4 inline-block bg-white px-6 py-3 rounded-full shadow-sm border border-slate-200"
+        >
+          <span class="font-semibold text-blue-600">Team:</span> MD IMRAN HASAN,
+          Augustine Chinemelu Udemezue, Emmanuel Kufre
+        </div>
+      </header>
+
+      <div class="space-y-4">
+        <details
+          class="group bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden"
+        >
+          <summary
+            class="flex justify-between items-center cursor-pointer p-6 bg-white hover:bg-slate-50 transition-colors"
+          >
+            <div class="flex items-center gap-3">
+              <span
+                class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider"
+                >Context</span
+              >
+              <h2 class="text-xl font-bold text-slate-800">
+                Project Overview & Instructions
+              </h2>
+            </div>
+            <svg
+              class="w-6 h-6 text-slate-400 transition-transform duration-300"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              ></path>
+            </svg>
+          </summary>
+          <div class="p-6 border-t border-slate-100 bg-slate-50/50">
+            <p class="mb-4 text-slate-700 leading-relaxed">
+              I have switched the organization to <strong>Data Soft</strong>, a
+              well-known software company in Bangladesh. The content is tailored
+              for a software environment (Project Manager perspective).
+            </p>
+            <ul class="list-disc list-inside space-y-2 text-slate-700">
+              <li>
+                <strong>Expansion:</strong> Presentation expanded to 16 Slides
+                to fit the 15-minute timeframe.
+              </li>
+              <li>
+                <strong>Part A (Interview):</strong> Script for the person you
+                interview (Project Manager).
+              </li>
+              <li>
+                <strong>Part B (Speeches):</strong> Exact words your group
+                members should speak.
+              </li>
+              <li>
+                <strong>Part C (Slides):</strong> Code to generate the slide
+                deck.
+              </li>
+            </ul>
+          </div>
+        </details>
+
+        <details
+          class="group bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden"
+        >
+          <summary
+            class="flex justify-between items-center cursor-pointer p-6 bg-white hover:bg-slate-50 transition-colors"
+          >
+            <div class="flex items-center gap-3">
+              <span
+                class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider"
+                >Part A</span
+              >
+              <h2 class="text-xl font-bold text-slate-800">
+                The Interview Script
+              </h2>
+            </div>
+            <svg
+              class="w-6 h-6 text-slate-400 transition-transform duration-300"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              ></path>
+            </svg>
+          </summary>
+          <div class="p-6 border-t border-slate-100 text-slate-700 space-y-6">
+            <div
+              class="bg-yellow-50 p-4 rounded-lg border border-yellow-100 text-sm mb-6"
+            >
+              <strong>Context:</strong> You are interviewing a Senior Project
+              Manager at Data Soft.
+            </div>
+
+            <div>
+              <p class="font-bold text-blue-900">
+                Question 1: Can you tell us about the company's size?
+              </p>
+              <p class="mt-1 pl-4 border-l-4 border-blue-200 italic">
+                "My company name is Data Soft. It is a large software company.
+                In total, we have over 400 employees. However, I manage a
+                specific division—the 'FinTech Squad'—which has about 35
+                developers and testers."
+              </p>
+            </div>
+
+            <div>
+              <p class="font-bold text-blue-900">
+                Question 2 & 3: What sector and industry are you in?
+              </p>
+              <p class="mt-1 pl-4 border-l-4 border-blue-200 italic">
+                "We are in the Private Sector. The industry is IT and Software
+                Development. We build software for banks and government
+                projects."
+              </p>
+            </div>
+
+            <div>
+              <p class="font-bold text-blue-900">
+                Question 4: How would you define your organization? What is the
+                main business?
+              </p>
+              <p class="mt-1 pl-4 border-l-4 border-blue-200 italic">
+                "I define us as a 'Digital Solution Provider.' Our main business
+                is custom software. Clients come to us with a problem, and we
+                write the code to solve it."
+              </p>
+            </div>
+
+            <div>
+              <p class="font-bold text-blue-900">
+                Question 5: What are the main attributes? Which is most
+                important?
+              </p>
+              <p class="mt-1 pl-4 border-l-4 border-blue-200 italic">
+                "The main attributes are Innovation, Precision, and Teamwork.
+                The most important is Teamwork. Writing code is like building a
+                house; if the backend developer and the frontend developer don't
+                talk, the app crashes."
+              </p>
+            </div>
+
+            <div>
+              <p class="font-bold text-blue-900">
+                Question 6: What is the organizational structure? Is it
+                responsive?
+              </p>
+              <p class="mt-1 pl-4 border-l-4 border-blue-200 italic">
+                "We use a Matrix Structure. It means employees have two bosses:
+                they report to me for the project, but they report to a 'Tech
+                Lead' for their coding standards. Is it responsive? Yes. We work
+                in 'Sprints' (2-week cycles). If the client changes their mind,
+                we can adjust in the next Sprint."
+              </p>
+            </div>
+
+            <div>
+              <p class="font-bold text-blue-900">
+                Question 7: What is the main role of management?
+              </p>
+              <p class="mt-1 pl-4 border-l-4 border-blue-200 italic">
+                "My main role is Unblocking. Functions: I plan the schedule, I
+                talk to the clients so my developers don't have to, and I remove
+                obstacles. Challenge: The biggest challenge is 'Deadlines.' In
+                software, things always break, but the client still wants the
+                product on Monday."
+              </p>
+            </div>
+
+            <div>
+              <p class="font-bold text-blue-900">
+                Question 8: Who are the formal and informal leaders?
+              </p>
+              <p class="mt-1 pl-4 border-l-4 border-blue-200 italic">
+                "The Formal Leader is the Director or CTO. The Informal Leader
+                is usually the 'Senior Architect.' He creates the toughest code.
+                When he speaks, everyone listens because he is a genius at
+                problem-solving."
+              </p>
+            </div>
+
+            <div>
+              <p class="font-bold text-blue-900">
+                Question 9: Describe the culture.
+              </p>
+              <p class="mt-1 pl-4 border-l-4 border-blue-200 italic">
+                "The culture is 'Cool but Intense.' Traditions: We have
+                'Stand-up Meetings' every morning where we stand and talk for 15
+                minutes. Environment: We have a gaming room and coffee, but when
+                a deadline is coming, people work late nights."
+              </p>
+            </div>
+
+            <div>
+              <p class="font-bold text-blue-900">
+                Question 10: What about the environment?
+              </p>
+              <p class="mt-1 pl-4 border-l-4 border-blue-200 italic">
+                "It is purely mental work. External Forces: Technology changes
+                fast. A coding language we used 3 years ago might be old now. We
+                have to study constantly. Internal Forces: Bugs. Fixing errors
+                in the code is the biggest daily stress."
+              </p>
+            </div>
+
+            <div>
+              <p class="font-bold text-blue-900">
+                Question 11: What management methods do you use?
+              </p>
+              <p class="mt-1 pl-4 border-l-4 border-blue-200 italic">
+                "We use Social-Psychological and Economic methods. Social: We
+                use the 'Agile' method. This empowers the team to make their own
+                decisions. Economic: We have 'Project Completion Bonuses.' If we
+                finish the app on time, the whole team gets a bonus."
+              </p>
+            </div>
+
+            <div>
+              <p class="font-bold text-blue-900">
+                Question 12: What is the dominant leadership style?
+              </p>
+              <p class="mt-1 pl-4 border-l-4 border-blue-200 italic">
+                "It is Democratic (Participative). You cannot force a programmer
+                to code. You have to ask them, 'How long will this take?' or
+                'What is the best way to build this?' Interaction: We solve
+                problems together on a whiteboard. Advantage: We get better
+                solutions because 10 brains are better than 1. Limitation:
+                Meetings. Sometimes we spend too much time talking and not
+                enough time coding."
+              </p>
+            </div>
+
+            <div>
+              <p class="font-bold text-blue-900">
+                Question 13: How does this style influence performance?
+              </p>
+              <p class="mt-1 pl-4 border-l-4 border-blue-200 italic">
+                "It makes the team feel ownership. They aren't just typing; they
+                are building their product. This makes the quality much higher."
+              </p>
+            </div>
+          </div>
+        </details>
+
+        <details
+          class="group bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden"
+        >
+          <summary
+            class="flex justify-between items-center cursor-pointer p-6 bg-white hover:bg-slate-50 transition-colors"
+          >
+            <div class="flex items-center gap-3">
+              <span
+                class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider"
+                >Part B</span
+              >
+              <h2 class="text-xl font-bold text-slate-800">
+                Presentation Speeches (15 Mins)
+              </h2>
+            </div>
+            <svg
+              class="w-6 h-6 text-slate-400 transition-transform duration-300"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              ></path>
+            </svg>
+          </summary>
+          <div class="p-6 border-t border-slate-100 bg-slate-50/30">
+            <div
+              class="mb-8 bg-white p-6 rounded-lg border border-slate-200 shadow-sm"
+            >
+              <h3 class="text-lg font-bold text-indigo-600 mb-2">
+                👤 SPEAKER 1: MD IMRAN HASAN
+              </h3>
+              <p
+                class="text-sm text-slate-500 mb-4 font-semibold uppercase tracking-wide"
+              >
+                Topic: Introduction, Data Soft Profile, Structure, Role of Mgmt
+              </p>
+              <div class="prose prose-slate max-w-none text-slate-700">
+                <p>
+                  "Hello everyone. We are Group PI24E. My name is MD IMRAN
+                  HASAN. Today, along with Augustine and Emmanuel, we will
+                  present our project on Management and Leadership. We are going
+                  to compare a local software giant, Data Soft, with a global AI
+                  leader, Sam Altman.
+                </p>
+                <p>
+                  <strong>Part A: The Interview</strong><br />
+                  We interviewed a Senior Project Manager at Data Soft.<br />
+                  <strong>Company Context:</strong> Data Soft is one of the
+                  biggest IT companies in Bangladesh. They build software for
+                  banks and the government.<br />
+                  <strong>The Team:</strong> Our interviewee manages a 'Squad'
+                  of about 35 developers.<br />
+                  <strong>The Business:</strong> Their job is purely
+                  intellectual—solving complex problems with code.
+                </p>
+                <p>
+                  <strong>The Organizational Structure:</strong><br />
+                  Software companies are different. They use a Matrix Structure.
+                  This implies that employees work in flexible teams. They have
+                  a Project Manager (for deadlines) and a Tech Lead (for coding
+                  quality). This structure is very Responsive. They work in
+                  2-week cycles called 'Sprints,' so they can change direction
+                  very quickly if the market changes.
+                </p>
+                <p>
+                  <strong>The Role of Management:</strong><br />
+                  The manager told us his main job is 'Unblocking.' He doesn't
+                  write the code himself. His job is to protect his team from
+                  client distractions so they can focus. His biggest challenge
+                  is managing stress when deadlines are tight.<br />
+                  Now, Augustine will explain their unique culture."
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="mb-8 bg-white p-6 rounded-lg border border-slate-200 shadow-sm"
+            >
+              <h3 class="text-lg font-bold text-indigo-600 mb-2">
+                👤 SPEAKER 2: Augustine Chinemelu Udemezue
+              </h3>
+              <p
+                class="text-sm text-slate-500 mb-4 font-semibold uppercase tracking-wide"
+              >
+                Topic: Culture, Methods, Internal Leadership Style
+              </p>
+              <div class="prose prose-slate max-w-none text-slate-700">
+                <p>
+                  "Thank you, Imran. My name is Augustine. I will talk about the
+                  environment inside a software company.
+                </p>
+                <p>
+                  <strong>Culture & Environment:</strong><br />
+                  The culture at Data Soft is 'Cool but Intense.'<br />
+                  Traditions: They have a 'Stand-up Meeting' every morning. It’s
+                  short and fast.<br />
+                  Forces: They are under constant pressure from Technology
+                  Changes. A tool they used two years ago might be useless
+                  today, so they must always study.
+                </p>
+                <p>
+                  <strong>Management Methods:</strong><br />
+                  They don't use strict rules like a factory. They use:<br />
+                  Social-Psychological Methods: They use the 'Agile'
+                  methodology. This gives the team freedom to choose how they
+                  work.<br />
+                  Economic Methods: They offer Completion Bonuses. If the
+                  software is finished on time, the team gets extra money.
+                </p>
+                <p>
+                  <strong>The Leadership Style:</strong><br />
+                  The dominant style is Democratic. Why? Because coding is
+                  creative work. You cannot stand behind a programmer and shout
+                  'Code faster!' It doesn't work. The Approach: The manager asks
+                  the team, 'How should we solve this?' The Advantage: It builds
+                  ownership. The developers feel like it is their product. The
+                  Limitation: Sometimes, they have too many meetings and too
+                  much debate.<br />
+                  Now, Emmanuel will introduce our Global Leader."
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm"
+            >
+              <h3 class="text-lg font-bold text-indigo-600 mb-2">
+                👤 SPEAKER 3: Emmanuel Kufre
+              </h3>
+              <p
+                class="text-sm text-slate-500 mb-4 font-semibold uppercase tracking-wide"
+              >
+                Topic: Sam Altman, Comparison, Conclusion
+              </p>
+              <div class="prose prose-slate max-w-none text-slate-700">
+                <p>
+                  "Thank you, Augustine. I am Emmanuel. We have looked at the
+                  Democratic style of Data Soft. Now, let’s look at the
+                  Visionary Style of Sam Altman, CEO of OpenAI.
+                </p>
+                <p>
+                  <strong>Part B: Sam Altman:</strong><br />
+                  Sam Altman is a Transformational Leader. His Goal: He isn't
+                  just trying to finish a project on time. He is trying to build
+                  AGI (Artificial General Intelligence) to change human history.
+                  His Power: He has immense Referent Power. When he was fired
+                  last year, his employees threatened to quit. They were loyal
+                  to his Vision, not just the company.
+                </p>
+                <p>
+                  <strong>Part C: Comparison:</strong><br />
+                  Let’s compare the two:<br />
+                  <strong>Data Soft (The Project Manager):</strong> Focus:
+                  Deadlines and Client Satisfaction. Style: Democratic
+                  (Teamwork). Goal: A working product.<br />
+                  <strong>OpenAI (Sam Altman):</strong> Focus: The Future and
+                  Disruption. Style: Visionary (Inspiration). Goal: A new world.
+                </p>
+                <p>
+                  <strong>Our Preference:</strong><br />
+                  Which would we prefer? Our group chose the Democratic Style of
+                  Data Soft. Working for a Visionary like Sam Altman is
+                  exciting, but it is very high-pressure and unstable. We prefer
+                  the Data Soft approach: you have a team, you support each
+                  other, and you have a clear voice in decisions.
+                </p>
+                <p>
+                  <strong>Conclusion:</strong><br />
+                  To conclude, Leadership depends on the goal. If you want to
+                  build a stable app, be Democratic. If you want to change the
+                  world, be Visionary.<br />
+                  Thank you for listening to Group PI24E."
+                </p>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details
+          class="group bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden"
+        >
+          <summary
+            class="flex justify-between items-center cursor-pointer p-6 bg-white hover:bg-slate-50 transition-colors"
+          >
+            <div class="flex items-center gap-3">
+              <span
+                class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider"
+                >Part C</span
+              >
+              <h2 class="text-xl font-bold text-slate-800">
+                Presentation Slides
+              </h2>
+            </div>
+            <svg
+              class="w-6 h-6 text-slate-400 transition-transform duration-300"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              ></path>
+            </svg>
+          </summary>
+          <div class="p-6 border-t border-slate-100">
+            <div
+              class="bg-gray-100 p-4 rounded font-mono text-sm text-gray-800"
+            >
+              <p class="mb-2">
+                // Copy the code below to generate the 16-slide deck
+              </p>
+              <p>Group Project PI24E - Data Soft & Sam Altman</p>
+              <p>Dec 13, 1:09 PM</p>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </body>
+</html>
