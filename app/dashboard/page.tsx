@@ -1,4 +1,12 @@
+import AiAgentTab from "./_components/AiAgentTab";
+import CreateAgentSection from "./_components/CreateAgentSection";
+
 function Dashboard() {
-  return <div>Dashboarad</div>;
+  return (
+    <div>
+      <CreateAgentSection />
+      <AiAgentTab />
+    </div>
+  );
 }
 export default Dashboard;

@@ -27,7 +27,7 @@ const Provider = ({
       });
 
       setUserDetail(result);
-      console.log(result);
+
       //save to context
     }
   };
