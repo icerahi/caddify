@@ -1,12 +1,13 @@
 import { Button } from "@/components/ui/button";
+import { Agent } from "@/types/AgentTypes";
 import { ChevronLeft, Code2, Play } from "lucide-react";
 
-function Header() {
+function Header({ agentDetails }: { agentDetails: Agent | undefined }) {
   return (
     <div className="w-full p-3 flex items-center justify-between">
       <div className="flex items-center">
         <ChevronLeft className="h-8 w-8" />
-        <h2 className="text-xl">Agent Name</h2>
+        <h2 className="text-xl">{agentDetails?.name}</h2>
       </div>
 
       <div className="flex items-center gap-3">

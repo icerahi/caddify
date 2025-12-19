@@ -8,4 +8,6 @@ export type Agent = {
   name: string;
   userId: Id<"UserTable">;
   _creationTime: number;
+  nodes?: any;
+  edges?: any;
 };
