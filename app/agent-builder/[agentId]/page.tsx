@@ -7,11 +7,13 @@ import {
   Background,
   Controls,
   MiniMap,
+  OnSelectionChangeParams,
   Panel,
   ReactFlow,
   addEdge,
   applyEdgeChanges,
   applyNodeChanges,
+  useOnSelectionChange,
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 import { useConvex, useMutation } from "convex/react";
@@ -21,6 +23,7 @@ import { useCallback, useContext, useEffect, useState } from "react";
 import { toast } from "sonner";
 import AgentToolsPanel from "../_components/AgentToolsPanel";
 import Header from "../_components/Header";
+import SettingPanel from "../_components/SettingPanel";
 import AgentNode from "../_customNodes/AgentNode";
 import ApiNode from "../_customNodes/ApiNode";
 import EndNode from "../_customNodes/EndNode";
@@ -59,8 +62,13 @@ function AgentBuilder() {
   const [edges, setEdges] = useState([]);
   const { agentId } = useParams();
 
-  const { addedNodes, setAddedNodes, nodeEdges, setNodeEdges } =
-    useContext(WorkflowContext);
+  const {
+    addedNodes,
+    setAddedNodes,
+    nodeEdges,
+    setNodeEdges,
+    setSelectedNode,
+  } = useContext(WorkflowContext);
   const convex = useConvex();
   const UpdateAgentDetails = useMutation(api.agent.UpdateAgentDetails);
   const [agentDetails, setAgentDetails] = useState<Agent>();
@@ -131,6 +139,17 @@ function AgentBuilder() {
       setEdges((edgesSnapshot) => addEdge(params, edgesSnapshot)),
     []
   );
+
+  const onNodeSelect = useCallback(
+    ({ nodes, edges }: OnSelectionChangeParams) => {
+      setSelectedNode(nodes[0]);
+      console.log(nodes[0]);
+    },
+    []
+  );
+
+  useOnSelectionChange({ onChange: onNodeSelect });
+
   return (
     <div>
       <Header agentDetails={agentDetails} />
@@ -158,7 +177,9 @@ function AgentBuilder() {
           <Panel position="top-left">
             <AgentToolsPanel />
           </Panel>
-          <Panel position="top-right">Setting</Panel>
+          <Panel position="top-right">
+            <SettingPanel />
+          </Panel>
           <Panel position="bottom-center">
             <Button onClick={saveNodesAndEdges}>
               {" "}
