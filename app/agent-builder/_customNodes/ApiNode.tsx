@@ -10,7 +10,7 @@ function ApiNode({ data }: any) {
           style={{ backgroundColor: data?.bgColor }}
         />
         <div>
-          <h2 className=""> API </h2>
+          <h2 className=""> {data?.label} </h2>
           <p className="text-xs text-gray-500">API</p>
         </div>
         <Handle type="target" position={Position.Left} />

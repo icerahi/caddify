@@ -1,0 +1,18 @@
+// convex/utils.ts
+import { FunctionDeclaration, SchemaType } from "@google/generative-ai";
+
+export const mapConfigToGeminiTools = (tools: any[]): FunctionDeclaration[] => {
+  return tools.map((tool) => ({
+    name: tool.name, // "Weather API"
+    description: tool.description,
+    parameters: {
+      type: SchemaType.OBJECT,
+      properties: Object.keys(tool.parameters).reduce((acc, key) => {
+        // We assume all your params are strings for simplicity based on your config
+        acc[key] = { type: SchemaType.STRING, description: key };
+        return acc;
+      }, {} as any),
+      required: Object.keys(tool.parameters),
+    },
+  }));
+};

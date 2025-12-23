@@ -11,7 +11,6 @@ function EndNode({ data }: any) {
         />
         <h2 className="">End</h2>
         <Handle type="target" position={Position.Left} />
-        <Handle type="source" position={Position.Right} />
       </div>
     </div>
   );

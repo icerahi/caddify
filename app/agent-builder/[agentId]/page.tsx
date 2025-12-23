@@ -48,7 +48,7 @@ import WhileNode from "../_customNodes/WhileNode";
 // ];
 // const initialEdges = [{ id: "n1-n2", source: "n1", target: "n2" }];
 
-const nodeTypes = {
+export const nodeTypes = {
   StartNode,
   AgentNode,
   EndNode,
@@ -182,9 +182,8 @@ function AgentBuilder() {
           </Panel>
           <Panel position="bottom-center">
             <Button onClick={saveNodesAndEdges}>
-              {" "}
               <Save /> Save
-            </Button>{" "}
+            </Button>
           </Panel>
         </ReactFlow>
       </div>

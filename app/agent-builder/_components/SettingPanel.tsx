@@ -1,6 +1,7 @@
 import { WorkflowContext } from "@/context/WorkflowContext";
 import { useContext } from "react";
 import AgentSettings from "../_nodeSettings/AgentSettings";
+import ApiAgentSettings from "../_nodeSettings/ApiSettings";
 import EndSettings from "../_nodeSettings/EndSettings";
 import IfElseSettings from "../_nodeSettings/IfElseSettings";
 import UserApprovalSettings from "../_nodeSettings/UserApprovalSettings";
@@ -54,6 +55,12 @@ function SettingPanel() {
         )}
         {selectedNode?.type === "UserApprovalNode" && (
           <UserApprovalSettings
+            selectedNode={selectedNode}
+            updateFormData={(value: any) => onUpdateNodeData(value)}
+          />
+        )}
+        {selectedNode?.type === "ApiNode" && (
+          <ApiAgentSettings
             selectedNode={selectedNode}
             updateFormData={(value: any) => onUpdateNodeData(value)}
           />

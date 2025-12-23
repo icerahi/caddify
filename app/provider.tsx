@@ -57,7 +57,7 @@ const Provider = ({
             setSelectedNode,
           }}
         >
-          <div>{children}</div>;
+          <div>{children}</div>
         </WorkflowContext.Provider>
       </ReactFlowProvider>
     </UserDetailContext.Provider>
