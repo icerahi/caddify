@@ -15,19 +15,15 @@ import { nodeTypes } from "../page";
 import ChatUi from "./_components/ChatUi";
 
 function PreviewAgent() {
+  const { agentId } = useParams();
   // 🧠 Store the agent detail fetched from Convex (nodes + edges)
   const [agentDetails, setAgentDetails] = useState<Agent>();
+  const [loading, setLoading] = useState(false);
 
-  // ⚙️ Convex client instance
   const convex = useConvex();
-
-  // 🔑 Get agentId from URL params (e.g., /agent/[agentId])
-  const { agentId } = useParams();
 
   // ⚙️ Store generated workflow config
   const [config, setConfig] = useState<any>();
-
-  const [loading, setLoading] = useState(false);
 
   const updateAgentToolConfig = useMutation(api.agent.UpdateAgentToolConfig);
 
@@ -174,6 +170,7 @@ function PreviewAgent() {
     setLoading(false);
   };
 
+  console.log(JSON.stringify(config));
   return (
     <div>
       <Header agentDetails={agentDetails} previewHeader={true} />
@@ -201,13 +198,14 @@ function PreviewAgent() {
               <Button onClick={GenerateAgentToolConfig} disabled={loading}>
                 <RefreshCwIcon
                   className={cn("", { "animate-spin": loading })}
-                />{" "}
+                />
                 Reboot Agent
               </Button>
             ) : (
               <ChatUi
                 GenerateAgentToolConfig={GenerateAgentToolConfig}
-                loading={loading} agentDetails={agentDetails}
+                loading={loading}
+                agentDetails={agentDetails}
               />
             )}
           </div>
