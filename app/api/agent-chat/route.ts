@@ -1,7 +1,8 @@
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import z from "zod";
+
 export async function POST(req: NextRequest) {
-  const { input, tools, agents, conversationId } = await req.json();
+  const { input, tools, agents, conversationId,agentName } = await req.json();
 
   //map all tools
   const generateTools = tools.map((t: any) => {
@@ -39,4 +40,25 @@ export async function POST(req: NextRequest) {
       },
     });
   });
+
+  const createdAgents= agents.map((config:any)=>{
+    return new Agent({name:config.name,instruction:config.instruction,tools:generateTools})
+  })
+
+  const finalAgent = Agent.create({
+    name:agentName,
+    instructions:"You determine which agent to ues based on the user query",
+    handoffs:createdAgents,
+  })
+
+  const result = await run(finalAgent,input,{conversationId,stream:true})
+  const stream = result.toTextStream({compatibleWithNodeStream:true})
+
+  return new Response(stream)
+}
+
+
+export async function GET(req:NextRequest){
+  const {id:conversationId} = await openai.conversation.create({})
+  return NextResponse.json(conversationId)
 }

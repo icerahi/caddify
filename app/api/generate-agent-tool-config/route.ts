@@ -47,6 +47,7 @@ Rules:
 export async function POST(req: NextRequest) {
   const { jsonConfig } = await req.json();
 
+  console.log(jsonConfig);
   const result = await model.generateContent(
     JSON.stringify(jsonConfig) + PROMPT
   );
