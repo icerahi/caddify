@@ -26,6 +26,7 @@ function PreviewAgent() {
   const [config, setConfig] = useState<any>();
 
   const updateAgentToolConfig = useMutation(api.agent.UpdateAgentToolConfig);
+  const [conversationId, setConversationId] = useState<string | null>(null);
 
   // 📦 Fetch agent details when component mounts
   useEffect(() => {
@@ -38,6 +39,11 @@ function PreviewAgent() {
       agentId: agentId as string,
     });
     setAgentDetails(result);
+
+    //get the conversation ID
+    const conversationIdResult = await axios.get("/api/agent-chat");
+    console.log(conversationIdResult.data);
+    setConversationId(conversationIdResult.data);
   };
 
   // 🧩 Generate workflow once agent data is loaded
@@ -206,6 +212,7 @@ function PreviewAgent() {
                 GenerateAgentToolConfig={GenerateAgentToolConfig}
                 loading={loading}
                 agentDetails={agentDetails}
+                conversationId={conversationId}
               />
             )}
           </div>

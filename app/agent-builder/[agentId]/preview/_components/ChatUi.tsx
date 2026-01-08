@@ -7,8 +7,14 @@ type Props = {
   GenerateAgentToolConfig: () => void;
   loading: boolean;
   agentDetails: Agent;
+  conversationId: string | null;
 };
-function ChatUi({ GenerateAgentToolConfig, loading, agentDetails }: Props) {
+function ChatUi({
+  GenerateAgentToolConfig,
+  loading,
+  agentDetails,
+  conversationId,
+}: Props) {
   return (
     <div>
       <div className="flex justify-between items-center border-b p-4">

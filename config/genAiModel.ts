@@ -1,10 +1,13 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
+// import { GoogleGenerativeAI } from "@google/generative-ai";
 
-//1. init the google client
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
+// //1. init the google client
+// const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
 
-//2. select model
-// Try the latest stable Flash model
-export const model = genAI.getGenerativeModel({
-  model: "gemini-2.5-flash-lite",
-});
+// //2. select model
+// // Try the latest stable Flash model
+// export const model = genAI.getGenerativeModel({
+//   model: "gemini-2.5-flash-lite",
+// });
+
+import OpenAI from "openai";
+export const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });

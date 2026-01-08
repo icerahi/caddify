@@ -1,4 +1,4 @@
-import { model } from "@/config/genAiModel";
+import { openai } from "@/config/genAiModel";
 import { NextRequest, NextResponse } from "next/server";
 
 const PROMPT = `
@@ -47,12 +47,12 @@ Rules:
 export async function POST(req: NextRequest) {
   const { jsonConfig } = await req.json();
 
-  console.log(jsonConfig);
-  const result = await model.generateContent(
-    JSON.stringify(jsonConfig) + PROMPT
-  );
-  const response = await result.response;
-  const outputText = response.text();
+  const response = await openai.responses.create({
+    model: "gpt-4.1-nano",
+    input: JSON.stringify(jsonConfig) + PROMPT,
+  });
+
+  const outputText = response.output_text;
 
   let parsedJson;
   try {
