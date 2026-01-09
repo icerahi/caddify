@@ -38,6 +38,7 @@ function PreviewAgent() {
     const result = await convex.query(api.agent.GetAgentById, {
       agentId: agentId as string,
     });
+
     setAgentDetails(result);
 
     //get the conversation ID

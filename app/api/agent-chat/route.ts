@@ -5,6 +5,7 @@ import z from "zod";
 
 export async function POST(req: NextRequest) {
   const { input, tools, agents, conversationId, agentName } = await req.json();
+  console.log({ tools, agents });
 
   //map all tools
   const generateTools = tools.map((t: any) => {
