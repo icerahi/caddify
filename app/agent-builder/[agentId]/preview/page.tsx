@@ -1,5 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import { UserDetailContext } from "@/context/UserDetailContext";
 import { api } from "@/convex/_generated/api";
 import { cn } from "@/lib/utils";
 import { Agent } from "@/types/AgentTypes";
@@ -9,10 +10,11 @@ import axios from "axios";
 import { useConvex, useMutation } from "convex/react";
 import { RefreshCwIcon } from "lucide-react";
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Header from "../../_components/Header";
 import { nodeTypes } from "../page";
 import ChatUi from "./_components/ChatUi";
+import PublishCodeDialog from "./_components/PublishCodeDialog";
 
 function PreviewAgent() {
   const { agentId } = useParams();
@@ -27,6 +29,9 @@ function PreviewAgent() {
 
   const updateAgentToolConfig = useMutation(api.agent.UpdateAgentToolConfig);
   const [conversationId, setConversationId] = useState<string | null>(null);
+  const [openDialog, setOpenDialog] = useState(false);
+
+  const { userDetail } = useContext(UserDetailContext);
 
   // 📦 Fetch agent details when component mounts
   useEffect(() => {
@@ -43,7 +48,6 @@ function PreviewAgent() {
 
     //get the conversation ID
     const conversationIdResult = await axios.get("/api/agent-chat");
-    console.log(conversationIdResult.data);
     setConversationId(conversationIdResult.data);
   };
 
@@ -177,10 +181,27 @@ function PreviewAgent() {
     setLoading(false);
   };
 
-  console.log(JSON.stringify(config));
+  // const agentSdkTest = async () => {
+  //   const res = await fetch("/api/agent-sdk", {
+  //     method: "POST",
+  //     body: JSON.stringify({ agentId, userId: userDetail?._id }),
+  //   });
+  //   if (res.ok) {
+  //     console.log("agent details:", await res.json());
+  //   }
+  // };
+
+  const onPublish = () => {
+    setOpenDialog(true);
+  };
+
   return (
     <div>
-      <Header agentDetails={agentDetails} previewHeader={true} />
+      <Header
+        agentDetails={agentDetails}
+        previewHeader={true}
+        onPublish={onPublish}
+      />
       <div className="grid grid-cols-4">
         <div className="col-span-3 p-5 border rounded-2xl m-5">
           <h2>Preview</h2>
@@ -219,6 +240,11 @@ function PreviewAgent() {
           </div>
         </div>
       </div>
+
+      <PublishCodeDialog
+        openDialog={openDialog}
+        setOpenDialog={setOpenDialog}
+      />
     </div>
   );
 }

@@ -150,9 +150,10 @@ function AgentBuilder() {
 
   useOnSelectionChange({ onChange: onNodeSelect });
 
+  const onPublish = () => {};
   return (
     <div>
-      <Header agentDetails={agentDetails} />
+      <Header agentDetails={agentDetails} onPublish={onPublish} />
 
       <div style={{ width: "100vw", height: "90vh" }}>
         <ReactFlow

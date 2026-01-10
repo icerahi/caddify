@@ -13,10 +13,12 @@ import {
 import { Input } from "@/components/ui/input";
 import { UserDetailContext } from "@/context/UserDetailContext";
 import { api } from "@/convex/_generated/api";
+import { useAuth } from "@clerk/nextjs";
 import { useMutation } from "convex/react";
 import { Loader2Icon, Plus } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useContext, useState } from "react";
+import { toast } from "sonner";
 import { v4 as uuid } from "uuid";
 
 function CreateAgentSection() {
@@ -27,8 +29,17 @@ function CreateAgentSection() {
   const router = useRouter();
   const [loader, setLoader] = useState(false);
   const { userDetail, setUserDetail } = useContext(UserDetailContext);
-  console.log({ userDetail });
+  const { has } = useAuth();
+  const isPaidUser = has && has({ plan: "unlimited_plan" });
+
   const createAgent = async () => {
+    if (!isPaidUser && userDetail && userDetail?.remainingCredits <= 0) {
+      toast.error(
+        "You have reached the limit of free agents. Please upgrade your plan to create more agents."
+      );
+      return;
+    }
+
     setLoader(true);
     const agentId = uuid();
     const result = await createAgentMutation({

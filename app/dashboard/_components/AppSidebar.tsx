@@ -14,6 +14,9 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { UserDetailContext } from "@/context/UserDetailContext";
+import { api } from "@/convex/_generated/api";
+import { useAuth } from "@clerk/nextjs";
+import { useConvex } from "convex/react";
 import {
   Database,
   Gem,
@@ -25,7 +28,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
 const MenuOptions = [
   {
@@ -35,7 +38,7 @@ const MenuOptions = [
   },
   {
     title: "AI Agents",
-    url: "#",
+    url: "/dashboard/my-agents",
     icon: Headphones,
   },
   {
@@ -45,12 +48,12 @@ const MenuOptions = [
   },
   {
     title: "Pricing",
-    url: "#",
+    url: "/dashboard/pricing",
     icon: WalletCards,
   },
   {
     title: "Profile",
-    url: "#",
+    url: "/dashboard/profile",
     icon: UserIcon,
   },
 ];
@@ -60,6 +63,26 @@ function AppSidebar() {
   const { userDetail, setUserDetail } = useContext(UserDetailContext);
   const pathname = usePathname();
 
+  const { has } = useAuth();
+  const isPaidUser = has && has({ plan: "unlimited_plan" });
+  const [totalRemainingCredits, setTotalRemainingCredits] = useState<number>(0);
+
+  const convex = useConvex();
+
+  useEffect(() => {
+    if (!isPaidUser && userDetail) getUserAgent();
+  }, [isPaidUser]);
+
+  const getUserAgent = async () => {
+    const result = await convex.query(api.agent.GetUserAgents, {
+      userId: userDetail?._id,
+    });
+    setTotalRemainingCredits(2 - Number(result?.length || 0));
+    setUserDetail((prev: any) => ({
+      ...prev,
+      remainingCredits: 2 - Number(result?.length || 0),
+    }));
+  };
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader>
@@ -91,16 +114,24 @@ function AppSidebar() {
         <SidebarGroup />
       </SidebarContent>
       <SidebarFooter className="mb-10">
-        <div className="flex gap-2 items-center">
-          <Gem />
-          {open && (
-            <h2>
-              Remaining Credits:
-              <span className="font-bold">{userDetail?.token}</span>
-            </h2>
-          )}
-        </div>
-        {open && <Button>Upgrade to unlimited</Button>}
+        {!isPaidUser ? (
+          <div>
+            <div className="flex gap-2 items-center">
+              <Gem />
+              {open && (
+                <h2>
+                  Remaining Credits:
+                  <span className="font-bold">{totalRemainingCredits}/2</span>
+                </h2>
+              )}
+            </div>
+            {open && <Button className="mt-2">Upgrade to unlimited</Button>}
+          </div>
+        ) : (
+          <div>
+            <h2>You can create unlimited Agents</h2>
+          </div>
+        )}
       </SidebarFooter>
     </Sidebar>
   );

@@ -3,9 +3,13 @@ import { Agent } from "@/types/AgentTypes";
 import { ChevronLeft, Code2, Play, X } from "lucide-react";
 import Link from "next/link";
 
-type Props = { agentDetails: Agent | undefined; previewHeader?: boolean };
+type Props = {
+  agentDetails: Agent | undefined;
+  previewHeader?: boolean;
+  onPublish: () => void;
+};
 
-function Header({ agentDetails, previewHeader = false }: Props) {
+function Header({ agentDetails, previewHeader = false, onPublish }: Props) {
   return (
     <div className="w-full p-3 flex items-center justify-between">
       <div className="flex items-center">
@@ -30,7 +34,7 @@ function Header({ agentDetails, previewHeader = false }: Props) {
             </Button>
           </Link>
         )}
-        <Button>Publish</Button>
+        <Button onClick={onPublish}>Publish</Button>
       </div>
     </div>
   );

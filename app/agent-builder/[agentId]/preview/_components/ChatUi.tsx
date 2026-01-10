@@ -50,7 +50,6 @@ function ChatUi({
       const { value, done: doneReading } = await reader.read();
       done = doneReading;
       if (value) {
-        console.log(decoder.decode(value));
         const chunk = decoder.decode(value);
         setMessages((prev) => {
           const updated = [...prev];

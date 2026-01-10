@@ -17,6 +17,8 @@ function MyAgents() {
     userDetail && getUserAgents();
   }, [userDetail]);
 
+  console.log({ userDetail });
+
   const getUserAgents = async () => {
     const result = await convex.query(api.agent.GetUserAgents, {
       userId: userDetail?._id,
