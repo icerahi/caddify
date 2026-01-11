@@ -14,7 +14,7 @@ import { Input } from "@/components/ui/input";
 import { UserDetailContext } from "@/context/UserDetailContext";
 import { api } from "@/convex/_generated/api";
 import { useAuth } from "@clerk/nextjs";
-import { useMutation } from "convex/react";
+import { useConvex, useMutation } from "convex/react";
 import { Loader2Icon, Plus } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useContext, useState } from "react";
@@ -32,8 +32,14 @@ function CreateAgentSection() {
   const { has } = useAuth();
   const isPaidUser = has && has({ plan: "unlimited_plan" });
 
+  const convex = useConvex();
+
   const createAgent = async () => {
-    if (!isPaidUser && userDetail && userDetail?.remainingCredits <= 0) {
+    if (
+      !isPaidUser &&
+      userDetail &&
+      userDetail?.token <= userDetail?.token_usages
+    ) {
       toast.error(
         "You have reached the limit of free agents. Please upgrade your plan to create more agents."
       );
@@ -47,9 +53,17 @@ function CreateAgentSection() {
       agentId,
       userId: userDetail?._id,
     });
-    console.log(result);
+
+    //getting updated user Details
+    const updatedUserDetails = await convex.query(api.user.getUserById, {
+      userId: userDetail?._id,
+    });
+
+    setUserDetail(updatedUserDetails);
+
     setOpenDialog(false);
     setLoader(false);
+
     //navigate to agent builder screen
     router.push(`/agent-builder/${agentId}`);
   };

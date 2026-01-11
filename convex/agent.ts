@@ -15,6 +15,14 @@ export const CreateNewAgent = mutation({
       userId: args.userId,
     });
 
+    //increment token/credit usages
+    const user = await ctx.db.get(args.userId);
+    if (!user) throw new Error("User not found");
+
+    await ctx.db.patch(args.userId, {
+      token_usages: (user.token_usages ?? 0) + 1,
+    });
+
     return result;
   },
 });

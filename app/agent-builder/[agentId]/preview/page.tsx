@@ -170,7 +170,6 @@ function PreviewAgent() {
     const result = await axios.post("/api/generate-agent-tool-config", {
       jsonConfig: config,
     });
-    console.log(result.data);
 
     //update to our db
     updateAgentToolConfig({

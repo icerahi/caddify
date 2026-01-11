@@ -71,17 +71,19 @@ function AppSidebar() {
 
   useEffect(() => {
     if (!isPaidUser && userDetail) getUserAgent();
-  }, [isPaidUser]);
+  }, [userDetail]);
 
   const getUserAgent = async () => {
     const result = await convex.query(api.agent.GetUserAgents, {
       userId: userDetail?._id,
     });
-    setTotalRemainingCredits(2 - Number(result?.length || 0));
-    setUserDetail((prev: any) => ({
-      ...prev,
-      remainingCredits: 2 - Number(result?.length || 0),
-    }));
+
+    setTotalRemainingCredits(userDetail?.token - Number(result?.length || 0));
+
+    // setUserDetail((prev: any) => ({
+    //   ...prev,
+    //   remainingCredits: 2 - Number(result?.length || 0),
+    // }));
   };
   return (
     <Sidebar collapsible="icon">
@@ -121,7 +123,10 @@ function AppSidebar() {
               {open && (
                 <h2>
                   Remaining Credits:
-                  <span className="font-bold">{totalRemainingCredits}/2</span>
+                  <span className="font-bold">
+                    {userDetail &&
+                      userDetail?.token_usages + "/" + userDetail?.token}
+                  </span>
                 </h2>
               )}
             </div>
